@@ -14,19 +14,19 @@ type DevWorkspaceTemplateSpecContent struct {
 	// Predefined, ready-to-use, workspace-related commands
 	// +optional
 	//
-	Commands []Command `json:"commands,omitempty"`
+	Commands []Command `json:"commands,omitempty" patchStrategy:"merge" patchMergeKey:"id"`
 
 	// Bindings of commands to events.
 	// Each command is referred-to by its name.
 	// +optional
-	Events Events `json:"events,omitempty"`
+	Events *Events `json:"events,omitempty"`
 
 	// Projects worked on in the workspace, containing names and sources locations
 	// +optional
-	Projects []Project `json:"projects,omitempty"`
+	Projects []Project `json:"projects,omitempty" patchStrategy:"merge" patchMergeKey:"name"`
 
 	// List of the workspace components, such as editor and plugins,
 	// user-provided containers, or other types of components
 	// +optional
-	Components []Component `json:"components,omitempty"`
+	Components []Component `json:"components,omitempty" patchStrategy:"merge" patchMergeKey:"name"`
 }

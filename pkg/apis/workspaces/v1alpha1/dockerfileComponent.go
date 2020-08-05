@@ -13,6 +13,9 @@ type Dockerfile struct {
 
 	// Mandatory destination to registry to push built image
 	Destination string `json:"destination,omitempty"`
+
+	// To trigger unprivileged build using kaniko
+	Rootless bool `json:"rootless,omitempty"`
 }
 
 

@@ -1,4 +1,4 @@
-module github.com/devfile/kubernetes-api
+module github.com/ranakan19/kubernetes-api
 
 go 1.13
 

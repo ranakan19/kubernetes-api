@@ -374,6 +374,7 @@ spec:
                     - Volume
                     - Plugin
                     - Custom
+                    - Dockerfile
                     type: string
                   container:
                     description: Allows adding and configuring workspace-related containers
@@ -538,6 +539,39 @@ spec:
                     required:
                     - componentClass
                     - embeddedResource
+                    - name
+                    type: object
+                  dockerfile:
+                    description: Allows specifying a dockerfile to initiate build
+                    properties:
+                      destination:
+                        description: destination to registry to push built image
+                        type: string
+                      dockerfileLocation:
+                        description: Mandatory path to dockerfile
+                        type: string
+                      name:
+                        description: Mandatory name that allows referencing the Volume
+                          component in Container volume mounts or inside a parent
+                        type: string
+                      rootless:
+                        description: field indicating whether rootless/unprivileged
+                          builder container is required
+                        type: boolean
+                      source:
+                        description: path to source code, if empty - source is assumed
+                          as the directory having devfile
+                        properties:
+                          location:
+                            description: path to source repository hosted locally
+                              or on cloud
+                            type: string
+                          sourceDir:
+                            description: path to local source directory folder
+                            type: string
+                        type: object
+                    required:
+                    - dockerfileLocation
                     - name
                     type: object
                   kubernetes:
@@ -1875,6 +1909,7 @@ spec:
                         - Volume
                         - Plugin
                         - Custom
+                        - Dockerfile
                         type: string
                       container:
                         description: Allows adding and configuring workspace-related
@@ -2046,6 +2081,40 @@ spec:
                         required:
                         - componentClass
                         - embeddedResource
+                        - name
+                        type: object
+                      dockerfile:
+                        description: Allows specifying a dockerfile to initiate build
+                        properties:
+                          destination:
+                            description: destination to registry to push built image
+                            type: string
+                          dockerfileLocation:
+                            description: Mandatory path to dockerfile
+                            type: string
+                          name:
+                            description: Mandatory name that allows referencing the
+                              Volume component in Container volume mounts or inside
+                              a parent
+                            type: string
+                          rootless:
+                            description: field indicating whether rootless/unprivileged
+                              builder container is required
+                            type: boolean
+                          source:
+                            description: path to source code, if empty - source is
+                              assumed as the directory having devfile
+                            properties:
+                              location:
+                                description: path to source repository hosted locally
+                                  or on cloud
+                                type: string
+                              sourceDir:
+                                description: path to local source directory folder
+                                type: string
+                            type: object
+                        required:
+                        - dockerfileLocation
                         - name
                         type: object
                       kubernetes:

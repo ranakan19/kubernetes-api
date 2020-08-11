@@ -662,6 +662,56 @@
             "markdownDescription": "Custom component whose logic is implementation-dependant and should be provided by the user possibly through some dedicated controller",
             "additionalProperties": false
           },
+          "dockerfile": {
+            "description": "Allows specifying a dockerfile to initiate build",
+            "properties": {
+              "destination": {
+                "description": "destination to registry to push built image",
+                "type": "string",
+                "markdownDescription": "destination to registry to push built image"
+              },
+              "dockerfileLocation": {
+                "description": "Mandatory path to dockerfile",
+                "type": "string",
+                "markdownDescription": "Mandatory path to dockerfile"
+              },
+              "name": {
+                "description": "Mandatory name that allows referencing the Volume component in Container volume mounts or inside a parent",
+                "type": "string",
+                "markdownDescription": "Mandatory name that allows referencing the Volume component in Container volume mounts or inside a parent"
+              },
+              "rootless": {
+                "description": "field indicating whether rootless/unprivileged builder container is required",
+                "type": "boolean",
+                "markdownDescription": "field indicating whether rootless/unprivileged builder container is required"
+              },
+              "source": {
+                "description": "path to source code, if empty - source is assumed as the directory having devfile",
+                "properties": {
+                  "location": {
+                    "description": "path to source repository hosted locally or on cloud",
+                    "type": "string",
+                    "markdownDescription": "path to source repository hosted locally or on cloud"
+                  },
+                  "sourceDir": {
+                    "description": "path to local source directory folder",
+                    "type": "string",
+                    "markdownDescription": "path to local source directory folder"
+                  }
+                },
+                "type": "object",
+                "markdownDescription": "path to source code, if empty - source is assumed as the directory having devfile",
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "dockerfileLocation",
+              "name"
+            ],
+            "type": "object",
+            "markdownDescription": "Allows specifying a dockerfile to initiate build",
+            "additionalProperties": false
+          },
           "kubernetes": {
             "description": "Allows importing into the workspace the Kubernetes resources defined in a given manifest. For example this allows reusing the Kubernetes definitions used to deploy some runtime components in production.",
             "properties": {
@@ -1812,6 +1862,11 @@
             "required": [
               "custom"
             ]
+          },
+          {
+            "required": [
+              "dockerfile"
+            ]
           }
         ]
       },
@@ -2517,6 +2572,56 @@
                 ],
                 "type": "object",
                 "markdownDescription": "Custom component whose logic is implementation-dependant and should be provided by the user possibly through some dedicated controller",
+                "additionalProperties": false
+              },
+              "dockerfile": {
+                "description": "Allows specifying a dockerfile to initiate build",
+                "properties": {
+                  "destination": {
+                    "description": "destination to registry to push built image",
+                    "type": "string",
+                    "markdownDescription": "destination to registry to push built image"
+                  },
+                  "dockerfileLocation": {
+                    "description": "Mandatory path to dockerfile",
+                    "type": "string",
+                    "markdownDescription": "Mandatory path to dockerfile"
+                  },
+                  "name": {
+                    "description": "Mandatory name that allows referencing the Volume component in Container volume mounts or inside a parent",
+                    "type": "string",
+                    "markdownDescription": "Mandatory name that allows referencing the Volume component in Container volume mounts or inside a parent"
+                  },
+                  "rootless": {
+                    "description": "field indicating whether rootless/unprivileged builder container is required",
+                    "type": "boolean",
+                    "markdownDescription": "field indicating whether rootless/unprivileged builder container is required"
+                  },
+                  "source": {
+                    "description": "path to source code, if empty - source is assumed as the directory having devfile",
+                    "properties": {
+                      "location": {
+                        "description": "path to source repository hosted locally or on cloud",
+                        "type": "string",
+                        "markdownDescription": "path to source repository hosted locally or on cloud"
+                      },
+                      "sourceDir": {
+                        "description": "path to local source directory folder",
+                        "type": "string",
+                        "markdownDescription": "path to local source directory folder"
+                      }
+                    },
+                    "type": "object",
+                    "markdownDescription": "path to source code, if empty - source is assumed as the directory having devfile",
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "dockerfileLocation",
+                  "name"
+                ],
+                "type": "object",
+                "markdownDescription": "Allows specifying a dockerfile to initiate build",
                 "additionalProperties": false
               },
               "kubernetes": {
@@ -3668,6 +3773,11 @@
               {
                 "required": [
                   "custom"
+                ]
+              },
+              {
+                "required": [
+                  "dockerfile"
                 ]
               }
             ]

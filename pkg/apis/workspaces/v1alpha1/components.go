@@ -4,7 +4,7 @@ import runtime "k8s.io/apimachinery/pkg/runtime"
 
 // ComponentType describes the type of component.
 // Only one of the following component type may be specified.
-// +kubebuilder:validation:Enum=Container;Kubernetes;Openshift;Volume;Plugin;Custom
+// +kubebuilder:validation:Enum=Container;Kubernetes;Openshift;Volume;Plugin;Custom;Dockerfile
 type ComponentType string
 
 const (
@@ -70,7 +70,7 @@ type Component struct {
 	Custom *CustomComponent `json:"custom,omitempty"`
 
 	// Allows specifying a dockerfile to initiate build
-	Dockerfile *Dockerfile `json:"dockerfile,omitempty"`
+	Dockerfile *DockerfileComponent `json:"dockerfile,omitempty"`
 }
 
 type CustomComponent struct {

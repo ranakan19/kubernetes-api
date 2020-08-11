@@ -44,6 +44,7 @@ type ComponentVisitor struct {
 	Volume     func(*VolumeComponent) error
 	Kubernetes func(*KubernetesComponent) error
 	Openshift  func(*OpenshiftComponent) error
+	Dockerfile func(*DockerfileComponent) error
 	Custom     func(*CustomComponent) error
 }
 
@@ -94,6 +95,10 @@ func (union Component) Id() (string, error) {
 		},
 		Volume: func(vol *VolumeComponent) error {
 			id = vol.Name
+			return nil
+		},
+		Dockerfile: func(dockerfile *DockerfileComponent) error {
+			id = dockerfile.Name
 			return nil
 		},
 	})

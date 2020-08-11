@@ -70,7 +70,7 @@ type Component struct {
 	Custom *CustomComponent `json:"custom,omitempty"`
 
 	// Allows specifying a dockerfile to initiate build
-	Dockerfile *Dockerfile `json:"dockerfile,omitempty"`
+	Dockerfile *DockerfileComponent `json:"dockerfile,omitempty"`
 }
 
 type CustomComponent struct {

@@ -1,6 +1,12 @@
 package v1alpha1
 
 //Dockerfile component of devfile
+type DockerfileComponent struct {
+	BaseComponent `json:",inline"`
+	Dockerfile    `json:",inline"`
+}
+
+//Dockerfile component of devfile
 type Dockerfile struct {
 	// Mandatory name that allows referencing the Volume component in Container volume mounts or inside a parent
 	Name string `json:"name"`
